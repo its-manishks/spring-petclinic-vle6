@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: petclinic-container
-          image: your-dockerhub-username/spring-petclinic:${BUILD_NUMBER}  # Replace this with actual image/tag
+          image: mk283/spring-petclinic:1
           ports:
             - containerPort: 8080
 
