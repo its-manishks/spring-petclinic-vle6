@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.4'   // Ensure this version is installed in Jenkins Global Tool Configuration
-        jdk 'Java 17'         // Ensure Java 17 is also configured in Jenkins
+        maven 'Maven 3.8.4'
+        jdk 'Java 17'
     }
 
     stages {
@@ -30,15 +30,23 @@ pipeline {
                 sh 'mvn package'
             }
         }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            }
+        }
     }
 
     post {
         success {
-            echo 'Build succeeded!'
+            echo 'Build and deployment succeeded!'
         }
         failure {
-            echo 'Build failed!'
+            echo 'Build or deployment failed.'
         }
     }
+}
 }
 
