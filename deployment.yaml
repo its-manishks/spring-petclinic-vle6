@@ -14,9 +14,12 @@ spec:
       labels:
         app: petclinic
     spec:
+      hostNetwork: true
       containers:
         - name: petclinic-container
           image: mk283/spring-petclinic:2
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
+          command: ["java"]
+          args: ["-jar", "/app.jar", "--server.port=8081"]
 
