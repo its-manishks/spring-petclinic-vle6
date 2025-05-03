@@ -1,8 +1,11 @@
 pipeline {
+environment {
+    KUBECONFIG = '/var/lib/jenkins/.kube/config'
+}
     agent any
 
     tools {
-        maven 'Maven 3.8.4'
+        maven 'Maven 3.9.6'
         jdk 'Java 17'
     }
 
@@ -38,6 +41,8 @@ pipeline {
               --region us-east-1 \
               --name spring-cluster \
               --alias spring-cluster \
+    --kubeconfig /var/lib/jenkins/.kube/config \
+    --output json
         '''
         sh 'kubectl apply -f deployment.yaml --validate=false'
         sh 'kubectl apply -f service.yaml --validate=false'
