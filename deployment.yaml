@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: petclinic-container
-          image: mk283/spring-petclinic:1
+          image: mk283/spring-petclinic:2
           ports:
             - containerPort: 8080
 
