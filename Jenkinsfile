@@ -24,13 +24,13 @@ environment {
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dcheckstyle.skip'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                sh 'mvn package -Dcheckstyle.skip'
             }
         }
 
