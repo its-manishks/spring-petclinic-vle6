@@ -38,7 +38,6 @@ pipeline {
               --region us-east-1 \
               --name spring-cluster \
               --alias spring-cluster \
-              --output json
         '''
         sh 'kubectl apply -f deployment.yaml --validate=false'
         sh 'kubectl apply -f service.yaml --validate=false'
