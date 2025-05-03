@@ -43,6 +43,8 @@ environment {
               --alias spring-cluster \
     --kubeconfig /var/lib/jenkins/.kube/config \
     --output json
+
+sed -i 's/client.authentication.k8s.io\\/v1alpha1/client.authentication.k8s.io\\/v1beta1/g' /var/lib/jenkins/.kube/config
         '''
         sh 'kubectl apply -f deployment.yaml --validate=false'
         sh 'kubectl apply -f service.yaml --validate=false'
