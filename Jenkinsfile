@@ -33,6 +33,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
+                sh 'aws eks update-kubeconfig --region us-east-1 --name spring-cluster'
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
             }
