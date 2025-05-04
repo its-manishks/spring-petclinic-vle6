@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-green
+  labels:
+    app: petclinic
+    color: green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic
+      color: green
+  template:
+    metadata:
+      labels:
+        app: petclinic
+        color: green
+    spec:
+      hostNetwork: true
+      containers:
+        - name: petclinic-container
+          image: mk283/spring-petclinic:2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          command: ["java"]
+          args: ["-jar", "/app.jar", "--server.port=8081", "--server.address=0.0.0.0"]
+

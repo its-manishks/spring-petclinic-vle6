@@ -6,9 +6,10 @@ spec:
   type: NodePort
   selector:
     app: petclinic
+    color: blue  # default target; change to "green" when switching
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8081
-      nodePort: 30036  # Optional: can be omitted to auto-assign a port
+      nodePort: 30036  # optional; Kubernetes can auto-assign if omitted
 
