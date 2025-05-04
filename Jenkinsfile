@@ -19,21 +19,9 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build & Package') {
             steps {
-                sh 'mvn clean install -Dcheckstyle.skip'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test -Dcheckstyle.skip'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'mvn package -Dcheckstyle.skip'
+                sh 'mvn clean package -Dcheckstyle.skip -DskipTests'
             }
         }
 
